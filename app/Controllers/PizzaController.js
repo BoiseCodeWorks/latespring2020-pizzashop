@@ -37,4 +37,23 @@ export default class PizzaController {
     formData.reset()
   }
 
+
+  delete(pizzaId) {
+    console.log(pizzaId)
+    _pizzaService.delete(pizzaId)
+    _drawPizzas()
+  }
+
+  addTopping(event, pizzaId) {
+    event.preventDefault()
+    let formData = event.target
+    let newToppingData = {
+      title: formData.toppingName.value
+    }
+    _pizzaService.addTopping(newToppingData, pizzaId)
+    _drawPizzas()
+
+  }
+
+
 }
